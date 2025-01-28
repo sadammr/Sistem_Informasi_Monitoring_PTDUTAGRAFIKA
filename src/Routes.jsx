@@ -42,6 +42,7 @@ const Routes = () => {
         </Route> */}
         <Route path='*' element={<ErrorComponent />} />
       </Route>
+
       <Route
         element={
           <Authenticated key='authenticated-outer' fallback={<Outlet />}>
@@ -64,11 +65,6 @@ const Routes = () => {
               }
             />
           }
-        />
-        <Route path='/register' element={<AuthPage type='register' />} />
-        <Route
-          path='/forgot-password'
-          element={<AuthPage type='forgotPassword' />}
         />
       </Route>
     </BaseRoutes>
