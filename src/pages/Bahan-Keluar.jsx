@@ -107,7 +107,7 @@ export const BahanKeluarList = () => {
   return (
     <List title='Bahan Keluar'>
       <Table {...tableProps} rowKey='id_bk'>
-        <Table.Column dataIndex='id_bk' title='IDD' />
+        <Table.Column dataIndex='id_bk' title='ID' />
         <Table.Column
           dataIndex='id_bahan'
           title='Bahan'

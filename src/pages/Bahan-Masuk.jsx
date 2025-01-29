@@ -118,7 +118,7 @@ export const BahanMasukList = () => {
   return (
     <List title='Bahan Masuk'>
       <Table {...tableProps} rowKey='id_bm'>
-        <Table.Column dataIndex='id_bm' title='IDD' />
+        <Table.Column dataIndex='id_bm' title='ID' />
         <Table.Column
           dataIndex='id_bahan'
           title='Bahan'
