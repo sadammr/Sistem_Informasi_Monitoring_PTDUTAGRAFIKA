@@ -137,22 +137,22 @@ export const BahanKeluarList = () => {
               <EditButton
                 hideText
                 size='small'
-                recordItemId={record.id_bm}
-                meta={{ id_bm: record.id_bm }}
+                recordItemId={record.id_bk}
+                meta={{ id_bk: record.id_bk }}
               />
               <ShowButton
                 hideText
                 size='small'
-                recordItemId={record.id_bm}
-                meta={{ id_bm: record.id_bm }}
+                recordItemId={record.id_bk}
+                meta={{ id_bk: record.id_bk }}
               />
               <DeleteButton
                 hideText
                 size='small'
-                recordItemId={record.id_bm}
+                recordItemId={record.id_bk}
                 meta={{
-                  id_bm: record.id_bm,
-                  idColumnName: 'id_bm',
+                  id_bk: record.id_bk,
+                  idColumnName: 'id_bk',
                 }}
               />
             </Space>
