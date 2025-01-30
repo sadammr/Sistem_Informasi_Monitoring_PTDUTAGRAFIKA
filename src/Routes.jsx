@@ -39,6 +39,13 @@ import {
   BahanKeluarCreate,
 } from './pages/Bahan-Keluar'
 
+import {
+  PenggunaEdit,
+  PenggunaList,
+  PenggunaShow,
+  PenggunaCreate,
+} from './pages/Pengguna'
+
 import { StokEdit, StokList, StokShow, StokCreate } from './pages/Stok'
 
 const Routes = () => {
@@ -127,6 +134,14 @@ const Routes = () => {
           <Route path='create' element={<BahanKeluarCreate />} />
           <Route path='edit/:id_bk' element={<BahanKeluarEdit />} />
           <Route path='show/:id_bk' element={<BahanKeluarShow />} />
+        </Route>
+
+        {/* Pengguna */}
+        <Route path='/pengguna'>
+          <Route index element={<PenggunaList />} />
+          <Route path='create' element={<PenggunaCreate />} />
+          <Route path='edit/:user_id' element={<PenggunaEdit />} />
+          <Route path='show/:user_id' element={<PenggunaShow />} />
         </Route>
 
         <Route path='*' element={<ErrorComponent />} />

@@ -1,4 +1,5 @@
 const BASE_STOK = 'stok'
+const BASE_PENGGUNA = 'pengguna'
 const BASE_SUPPLIER = 'supplier'
 const BASE_BAHAN_BAKU = 'bahan-baku'
 const BASE_BAHAN_MASUK = 'bahan-masuk'
@@ -62,6 +63,17 @@ const resources = [
     meta: {
       canDelete: true,
       label: 'Bahan Keluar',
+    },
+  },
+  {
+    name: 'pengguna',
+    list: `/${BASE_PENGGUNA}`,
+    create: `/${BASE_PENGGUNA}/${BASE_CREATE}`,
+    edit: `/${BASE_PENGGUNA}/${BASE_EDIT}/:user_id`,
+    show: `/${BASE_PENGGUNA}/${BASE_SHOW}/:user_id`,
+    meta: {
+      canDelete: true,
+      label: 'Pengguna',
     },
   },
 ]
