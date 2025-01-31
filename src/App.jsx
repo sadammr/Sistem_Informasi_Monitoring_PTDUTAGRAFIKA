@@ -1,5 +1,5 @@
-import { Refine } from '@refinedev/core'
 import { dataProvider } from '@refinedev/supabase'
+import { CanAccess, Refine } from '@refinedev/core'
 import routerBindings from '@refinedev/react-router'
 
 import Routes from './Routes'
@@ -7,6 +7,7 @@ import Routes from './Routes'
 import { resources } from './utility/resources'
 import { authProvider } from './utility/authProvider'
 import { supabaseClient } from './utility/supabaseClient'
+import { canAccessControlProvider } from './utility/canAccessControlProvider'
 
 const App = () => {
   return (
@@ -15,8 +16,13 @@ const App = () => {
       authProvider={authProvider}
       routerProvider={routerBindings}
       dataProvider={dataProvider(supabaseClient)}
+      accessControlProvider={{
+        can: canAccessControlProvider,
+      }}
     >
-      <Routes />
+      <CanAccess>
+        <Routes />
+      </CanAccess>
     </Refine>
   )
 }

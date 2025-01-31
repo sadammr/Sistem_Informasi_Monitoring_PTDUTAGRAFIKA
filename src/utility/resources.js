@@ -11,6 +11,13 @@ const BASE_SHOW = 'show'
 
 const resources = [
   {
+    name: 'home',
+    list: '/',
+    meta: {
+      hide: true,
+    },
+  },
+  {
     name: 'supplier',
     list: `/${BASE_SUPPLIER}`,
     create: `/${BASE_SUPPLIER}/${BASE_CREATE}`,

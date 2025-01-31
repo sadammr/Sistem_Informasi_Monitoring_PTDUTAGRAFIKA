@@ -4,11 +4,11 @@ const authProvider = {
   login: async ({ email, password }) => {
     // sign in with oauth
     try {
-      // sign in with email and password
-      const { data, error } = await supabaseClient.auth.signInWithPassword({
-        email,
-        password,
-      })
+      const { data, error } = await supabaseClient
+        .from('pengguna')
+        .select()
+        .eq('email', email)
+        .eq('user_password', password)
 
       if (error) {
         return {
@@ -17,7 +17,9 @@ const authProvider = {
         }
       }
 
-      if (data?.user) {
+      if (data?.at(0)) {
+        localStorage.setItem('user_id', data?.at(0)?.user_id)
+
         return {
           success: true,
           redirectTo: '/',
@@ -39,14 +41,7 @@ const authProvider = {
     }
   },
   logout: async () => {
-    const { error } = await supabaseClient.auth.signOut()
-
-    if (error) {
-      return {
-        success: false,
-        error,
-      }
-    }
+    localStorage.removeItem('user_id')
 
     return {
       success: true,
@@ -60,10 +55,9 @@ const authProvider = {
   },
   check: async () => {
     try {
-      const { data } = await supabaseClient.auth.getSession()
-      const { session } = data
+      const id = localStorage.getItem('user_id')
 
-      if (!session) {
+      if (!id) {
         return {
           authenticated: false,
           error: {
@@ -91,21 +85,19 @@ const authProvider = {
     }
   },
   getPermissions: async () => {
-    const user = await supabaseClient.auth.getUser()
-
-    if (user) {
-      return user.data.user?.role
-    }
-
-    return null
+    //
   },
   getIdentity: async () => {
-    const { data } = await supabaseClient.auth.getUser()
+    const id = localStorage.getItem('user_id')
+    const { data } = await supabaseClient
+      .from('pengguna')
+      .select()
+      .eq('user_id', id)
 
-    if (data?.user) {
+    if (data?.at?.(0)) {
       return {
-        ...data.user,
-        name: data.user.email,
+        ...data.at?.(0),
+        name: `${data.at?.(0)?.user_nama} - ${data.at?.(0)?.email}`,
       }
     }
 

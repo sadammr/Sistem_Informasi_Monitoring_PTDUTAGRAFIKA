@@ -75,16 +75,12 @@ const PenggunaForm = ({ formProps }) => {
         <Select
           options={[
             {
-              label: 'Admin',
-              value: 'admin',
+              label: 'Tim Administrasi',
+              value: 'tim-administrasi',
             },
             {
               label: 'Tim Produksi',
               value: 'tim-produksi',
-            },
-            {
-              label: 'Tim Administrasi',
-              value: 'tim-administrasi',
             },
             {
               label: 'Staf Gudang',
@@ -107,7 +103,28 @@ export const PenggunaList = () => {
       <Table {...tableProps} rowKey='user_id'>
         <Table.Column dataIndex='user_nama' title='Nama' />
         <Table.Column dataIndex='user_name' title='Username' />
-        <Table.Column dataIndex='level' title='Level' />
+        <Table.Column
+          dataIndex='level'
+          title='Level'
+          render={(value) => {
+            const label = [
+              {
+                label: 'Tim Administrasi',
+                value: 'tim-administrasi',
+              },
+              {
+                label: 'Tim Produksi',
+                value: 'tim-produksi',
+              },
+              {
+                label: 'Staf Gudang',
+                value: 'staf-gudang',
+              },
+            ].filter((item) => item.value === value)
+
+            return label?.at?.(0)?.label
+          }}
+        />
         <Table.Column
           dataIndex={['email']}
           title='Email'

@@ -11,6 +11,8 @@ import {
   ErrorComponent,
 } from '@refinedev/antd'
 
+import Home from './pages/Home'
+
 import {
   SupplierEdit,
   SupplierList,
@@ -94,7 +96,9 @@ const Routes = () => {
           </Authenticated>
         }
       >
-        <Route index element={<NavigateToResource resource='supplier' />} />
+        <Route index element={<NavigateToResource resource='home' />} />
+
+        <Route path='' element={<Home />} />
 
         {/* Supplier */}
         <Route path='/supplier'>
