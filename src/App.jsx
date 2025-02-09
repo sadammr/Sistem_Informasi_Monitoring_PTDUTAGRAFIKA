@@ -1,6 +1,7 @@
 import { dataProvider } from '@refinedev/supabase'
 import { CanAccess, Refine } from '@refinedev/core'
 import routerBindings from '@refinedev/react-router'
+import { useNotificationProvider } from '@refinedev/antd'
 
 import Routes from './Routes'
 
@@ -16,6 +17,7 @@ const App = () => {
       authProvider={authProvider}
       routerProvider={routerBindings}
       dataProvider={dataProvider(supabaseClient)}
+      notificationProvider={useNotificationProvider}
       accessControlProvider={{
         can: canAccessControlProvider,
       }}

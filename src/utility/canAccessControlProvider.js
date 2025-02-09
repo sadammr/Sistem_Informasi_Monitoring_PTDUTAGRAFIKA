@@ -1,7 +1,12 @@
 import { supabaseClient } from './supabaseClient'
 
-const stafGudangAccess = ['home', 'stok', 'bahan_masuk']
-const timAdministrasiAccess = ['home', 'bahan_baku', 'bahan_keluar']
+const timAdministrasiAccess = [
+  'home',
+  'bahan_baku',
+  'bahan_keluar',
+  'bahan_masuk',
+  'stok',
+]
 
 export const canAccessControlProvider = async ({ resource }) => {
   const id = localStorage.getItem('user_id')
@@ -35,16 +40,8 @@ export const canAccessControlProvider = async ({ resource }) => {
     }
 
     case 'staf-gudang': {
-      const result = stafGudangAccess.includes(resource)
-
-      if (result) {
-        return {
-          can: true,
-        }
-      }
-
       return {
-        can: false,
+        can: true,
       }
     }
 
