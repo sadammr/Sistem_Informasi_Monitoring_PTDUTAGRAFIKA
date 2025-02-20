@@ -1,14 +1,8 @@
+/* eslint-disable no-unused-vars */
+
 import { supabaseClient } from './supabaseClient'
 
-const timAdministrasiAccess = [
-  'home',
-  'bahan_baku',
-  'bahan_keluar',
-  'bahan_masuk',
-  'stok',
-]
-
-export const canAccessControlProvider = async ({ resource }) => {
+export const canAccessControlProvider = async ({ _, action }) => {
   const id = localStorage.getItem('user_id')
 
   const { data } = await supabaseClient
@@ -20,9 +14,7 @@ export const canAccessControlProvider = async ({ resource }) => {
 
   switch (level) {
     case 'tim-administrasi': {
-      const result = timAdministrasiAccess.includes(resource)
-
-      if (result) {
+      if (action === 'list') {
         return {
           can: true,
         }
