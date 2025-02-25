@@ -3,7 +3,16 @@
 import { useMemo } from 'react'
 import { useParams } from 'react-router'
 import { useList } from '@refinedev/core'
-import { Table, Space, Form, Input, Select, InputNumber } from 'antd'
+import {
+  Tag,
+  Table,
+  Space,
+  Form,
+  Input,
+  Select,
+  Switch,
+  InputNumber,
+} from 'antd'
 import {
   useTable,
   List,
@@ -11,7 +20,6 @@ import {
   Edit,
   Show,
   EditButton,
-  ShowButton,
   DeleteButton,
   DateField,
   useForm,
@@ -92,6 +100,12 @@ const BahanBakuForm = ({ formProps }) => {
       >
         <InputNumber />
       </Form.Item>
+      <Form.Item label='Status' name={['status']}>
+        <Switch checkedChildren='Tersedia' unCheckedChildren='Tidak Tersedia' />
+      </Form.Item>
+      <Form.Item label='Keterangan' name={['keterangan']}>
+        <Input />
+      </Form.Item>
     </Form>
   )
 }
@@ -131,6 +145,22 @@ export const BahanBakuList = () => {
           render={(value) => formatCurrency(value)}
         />
         <Table.Column
+          dataIndex='status'
+          title='Status'
+          render={(value) =>
+            value ? (
+              <Tag color='blue'>Tersedia</Tag>
+            ) : (
+              <Tag color='red'>Tidak Tersedia</Tag>
+            )
+          }
+        />
+        <Table.Column
+          dataIndex='keterangan'
+          title='Keterangan'
+          render={(value) => (value ? value : '-')}
+        />
+        <Table.Column
           dataIndex={['created_at']}
           title='Created At'
           render={(value) => <DateField value={value} />}
@@ -141,12 +171,6 @@ export const BahanBakuList = () => {
           render={(_, record) => (
             <Space>
               <EditButton
-                hideText
-                size='small'
-                recordItemId={record.id_bahan}
-                meta={{ id_bahan: record.id_bahan }}
-              />
-              <ShowButton
                 hideText
                 size='small'
                 recordItemId={record.id_bahan}

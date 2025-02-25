@@ -9,7 +9,6 @@ import {
   Edit,
   Show,
   EditButton,
-  ShowButton,
   DeleteButton,
   DateField,
   useForm,
@@ -78,12 +77,6 @@ export const SupplierList = () => {
           render={(_, record) => (
             <Space>
               <EditButton
-                hideText
-                size='small'
-                recordItemId={record.id_supplier}
-                meta={{ id_supplier: record.id_supplier }}
-              />
-              <ShowButton
                 hideText
                 size='small'
                 recordItemId={record.id_supplier}

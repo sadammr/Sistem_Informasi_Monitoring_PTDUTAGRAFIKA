@@ -13,42 +13,29 @@ import {
 
 import Home from './pages/Home'
 
-import {
-  SupplierEdit,
-  SupplierList,
-  SupplierShow,
-  SupplierCreate,
-} from './pages/Supplier'
+import { SupplierEdit, SupplierList, SupplierCreate } from './pages/Supplier'
 
 import {
   BahanBakuList,
   BahanBakuEdit,
-  BahanBakuShow,
   BahanBakuCreate,
 } from './pages/Bahan-Baku'
 
 import {
-  BahanMasukShow,
   BahanMasukEdit,
   BahanMasukList,
   BahanMasukCreate,
 } from './pages/Bahan-Masuk'
 
 import {
-  BahanKeluarShow,
   BahanKeluarEdit,
   BahanKeluarList,
   BahanKeluarCreate,
 } from './pages/Bahan-Keluar'
 
-import {
-  PenggunaEdit,
-  PenggunaList,
-  PenggunaShow,
-  PenggunaCreate,
-} from './pages/Pengguna'
+import { PenggunaEdit, PenggunaList, PenggunaCreate } from './pages/Pengguna'
 
-import { StokEdit, StokList, StokShow, StokCreate } from './pages/Stok'
+import { StokEdit, StokList, StokCreate } from './pages/Stok'
 
 const Routes = () => {
   return (
@@ -105,7 +92,6 @@ const Routes = () => {
           <Route index element={<SupplierList />} />
           <Route path='create' element={<SupplierCreate />} />
           <Route path='edit/:id_supplier' element={<SupplierEdit />} />
-          <Route path='show/:id_supplier' element={<SupplierShow />} />
         </Route>
 
         {/* Bahan Baku */}
@@ -113,7 +99,6 @@ const Routes = () => {
           <Route index element={<BahanBakuList />} />
           <Route path='create' element={<BahanBakuCreate />} />
           <Route path='edit/:id_bahan' element={<BahanBakuEdit />} />
-          <Route path='show/:id_bahan' element={<BahanBakuShow />} />
         </Route>
 
         {/* Stok */}
@@ -121,7 +106,6 @@ const Routes = () => {
           <Route index element={<StokList />} />
           <Route path='create' element={<StokCreate />} />
           <Route path='edit/:id_stok' element={<StokEdit />} />
-          <Route path='show/:id_stok' element={<StokShow />} />
         </Route>
 
         {/* Bahan Masuk */}
@@ -129,7 +113,6 @@ const Routes = () => {
           <Route index element={<BahanMasukList />} />
           <Route path='create' element={<BahanMasukCreate />} />
           <Route path='edit/:id_bm' element={<BahanMasukEdit />} />
-          <Route path='show/:id_bm' element={<BahanMasukShow />} />
         </Route>
 
         {/* Bahan Keluar */}
@@ -137,7 +120,6 @@ const Routes = () => {
           <Route index element={<BahanKeluarList />} />
           <Route path='create' element={<BahanKeluarCreate />} />
           <Route path='edit/:id_bk' element={<BahanKeluarEdit />} />
-          <Route path='show/:id_bk' element={<BahanKeluarShow />} />
         </Route>
 
         {/* Pengguna */}
@@ -145,7 +127,6 @@ const Routes = () => {
           <Route index element={<PenggunaList />} />
           <Route path='create' element={<PenggunaCreate />} />
           <Route path='edit/:user_id' element={<PenggunaEdit />} />
-          <Route path='show/:user_id' element={<PenggunaShow />} />
         </Route>
 
         <Route path='*' element={<ErrorComponent />} />

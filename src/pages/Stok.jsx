@@ -3,7 +3,16 @@
 import { useMemo } from 'react'
 import { useParams } from 'react-router'
 import { useList } from '@refinedev/core'
-import { Table, Space, Form, Select, InputNumber } from 'antd'
+import {
+  Input,
+  Switch,
+  Table,
+  Space,
+  Form,
+  Select,
+  InputNumber,
+  Tag,
+} from 'antd'
 import {
   useTable,
   List,
@@ -11,11 +20,12 @@ import {
   Edit,
   Show,
   EditButton,
-  ShowButton,
   DeleteButton,
   DateField,
   useForm,
 } from '@refinedev/antd'
+
+import { formatCurrency } from '../utility/formatCurrency'
 
 const StokForm = ({ formProps }) => {
   const { data: dataBahan } = useList({
@@ -57,6 +67,23 @@ const StokForm = ({ formProps }) => {
       >
         <InputNumber />
       </Form.Item>
+      <Form.Item
+        label='Harga Bahan'
+        name={['harga']}
+        rules={[
+          {
+            required: true,
+          },
+        ]}
+      >
+        <InputNumber />
+      </Form.Item>
+      <Form.Item label='Status' name={['status']}>
+        <Switch checkedChildren='Tersedia' unCheckedChildren='Tidak Tersedia' />
+      </Form.Item>
+      <Form.Item label='Keterangan' name={['keterangan']}>
+        <Input />
+      </Form.Item>
     </Form>
   )
 }
@@ -85,6 +112,27 @@ export const StokList = () => {
         />
         <Table.Column dataIndex='qty' title='Qty' />
         <Table.Column
+          dataIndex='harga'
+          title='Harga'
+          render={(value) => formatCurrency(value)}
+        />
+        <Table.Column
+          dataIndex='status'
+          title='Status'
+          render={(value) =>
+            value ? (
+              <Tag color='blue'>Tersedia</Tag>
+            ) : (
+              <Tag color='red'>Tidak Tersedia</Tag>
+            )
+          }
+        />
+        <Table.Column
+          dataIndex='keterangan'
+          title='Keterangan'
+          render={(value) => (value ? value : '-')}
+        />
+        <Table.Column
           dataIndex={['created_at']}
           title='Created At'
           render={(value) => <DateField value={value} />}
@@ -95,12 +143,6 @@ export const StokList = () => {
           render={(_, record) => (
             <Space>
               <EditButton
-                hideText
-                size='small'
-                recordItemId={record.id_stok}
-                meta={{ id_stok: record.id_stok }}
-              />
-              <ShowButton
                 hideText
                 size='small'
                 recordItemId={record.id_stok}

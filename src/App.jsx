@@ -8,7 +8,6 @@ import Routes from './Routes'
 import { resources } from './utility/resources'
 import { authProvider } from './utility/authProvider'
 import { supabaseClient } from './utility/supabaseClient'
-import { canAccessControlProvider } from './utility/canAccessControlProvider'
 
 const App = () => {
   return (
@@ -18,9 +17,6 @@ const App = () => {
       routerProvider={routerBindings}
       dataProvider={dataProvider(supabaseClient)}
       notificationProvider={useNotificationProvider}
-      accessControlProvider={{
-        can: canAccessControlProvider,
-      }}
     >
       <CanAccess>
         <Routes />

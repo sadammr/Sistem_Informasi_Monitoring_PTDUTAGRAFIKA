@@ -20,7 +20,6 @@ import {
   Edit,
   Show,
   EditButton,
-  ShowButton,
   DeleteButton,
   DateField,
   useForm,
@@ -135,12 +134,6 @@ export const BahanKeluarList = () => {
           render={(_, record) => (
             <Space>
               <EditButton
-                hideText
-                size='small'
-                recordItemId={record.id_bk}
-                meta={{ id_bk: record.id_bk }}
-              />
-              <ShowButton
                 hideText
                 size='small'
                 recordItemId={record.id_bk}
